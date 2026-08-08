@@ -1,73 +1,47 @@
-# Welcome to your Lovable project
+# Secure Relay
 
-## Project info
+Proxy and VPN service site — marketing pages plus an authenticated customer
+dashboard, backed by Supabase.
 
-**URL**: https://lovable.dev/projects/794cf8f4-e33a-4e27-a122-24a892e858b9
+## Features
 
-## How can I edit this code?
+- Marketing landing page with global-locations and pricing sections
+- Supabase email/password authentication (`/auth`)
+- Customer dashboard (`/dashboard`)
+- Responsive layout with mobile detection hook
 
-There are several ways of editing your application.
+## Routes
 
-**Use Lovable**
+| Path | Page |
+|---|---|
+| `/` | Marketing landing page |
+| `/auth` | Sign in / sign up |
+| `/dashboard` | Authenticated customer dashboard |
+| `*` | Not found |
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/794cf8f4-e33a-4e27-a122-24a892e858b9) and start prompting.
+## Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+React · TypeScript · Vite · Supabase · shadcn/ui · Tailwind CSS
 
-**Use your preferred IDE**
+## Running locally
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Prerequisites:** Node.js 18+, a Supabase project
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install
+cp .env.example .env    # add your Supabase URL and anon key
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+| Command | What it does |
+|---|---|
+| `npm run dev` | Vite dev server |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Serve the production build |
+| `npm run lint` | ESLint |
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Configuration
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/794cf8f4-e33a-4e27-a122-24a892e858b9) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Supabase credentials are read from the environment. Never commit `.env` — only
+the anon key belongs client-side, and the service-role key must never ship to
+the browser.
